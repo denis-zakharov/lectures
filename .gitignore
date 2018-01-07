@@ -1,0 +1,21 @@
+# JetBrains IntelliJ Idea
+.idea/
+## File-based project format:
+*.iws
+## Plugin-specific files:
+out/
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
+
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
