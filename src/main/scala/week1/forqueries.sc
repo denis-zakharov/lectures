@@ -14,7 +14,18 @@ val books: List[Book] = List(
   Book(title = "Programming in Scala",
     authors = List("Odersky, Martin", "Spoon, Lex", "Venners, Bill")))
 
+// Original
 for (b <- books; a <- b.authors if a startsWith "Bird") yield b.title
+// 1st step
+books flatMap (b =>
+  for (a <- b.authors if a startsWith "Bird") yield b.title)
+// 2nd step
+books flatMap (b =>
+  for (a <- b.authors.withFilter(a => a startsWith "Bird")) yield b.title)
+// 3rd step !!!
+books flatMap (b =>
+  b.authors withFilter(a => a startsWith "Bird") map (_ => b.title))
+
 for (b <- books if b.title contains "Program") yield b.title
 
 // A list of all authors who have written at least two books present in the database

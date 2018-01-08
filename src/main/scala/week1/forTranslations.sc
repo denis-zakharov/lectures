@@ -1,3 +1,17 @@
+// map, flatMap, and withFilter should be defined for a data type
+// to use a for-comprehension
+def mapFun[T, U](xs: List[T], f: T => U): List[U] =
+  for (x <- xs) yield f(x)
+
+def flatMap[T, U](xs: List[T], f: T => Iterable[U]): List[U] =
+  for (x <- xs; y <- f(x)) yield y
+
+// withFilter
+def filter[T](xs: List[T], p: T => Boolean): List[T] =
+  for (x <- xs if p(x)) yield x
+
+mapFun(List(1, 2, 3), (x: Int) => x + x)
+
 val n = 10
 
 def isPrime(num: Int): Boolean = !(2 until num).exists(x => num % x == 0 && x < num)
