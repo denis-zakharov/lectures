@@ -65,4 +65,4 @@ val tryX = listMonad map fUpperChar
 Try(tryX) flatMap (chList => Try(chList map fUpperChar))
 tryX map fUpperChar // f(x), also x-expression might throw an exception whereas Try(x) can't
 // the right unit law - OK
-tryMonadTest flatMap Try.apply // the tryMonadTest itself
+tryMonadTest flatMap (x => Try(x)) // the tryMonadTest itself
