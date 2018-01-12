@@ -9,9 +9,14 @@ def listRange(lo: Int, hi: Int): List[Int] =
   if (lo >= hi) Nil
   else lo :: listRange(lo + 1, hi)
 
-def streamRange(lo: Int, hi: Int): Stream[Int] =
+def streamRange(lo: Int, hi: Int): Stream[Int] = {
+  print(lo+" ")
   if (lo >= hi) Stream.empty
   else Stream.cons(lo, streamRange(lo + 1, hi))
+}
 
 // List operations applied to streams
 Stream(1) #:: xs // a cons-operator for streams
+
+streamRange(1, 10).take(3)
+streamRange(1, 10).take(3).toList
